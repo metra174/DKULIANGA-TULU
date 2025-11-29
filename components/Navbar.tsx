@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
             </a>
           ))}
           <a 
-            href="https://wa.me/244930605060" 
+            href="https://wa.me/244947935572" 
             className="bg-brand-accent hover:bg-blue-600 text-white px-5 py-2 rounded-full font-medium transition-all transform hover:scale-105"
           >
             Falar Agora

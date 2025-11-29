@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
         
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
           <a 
-            href="https://wa.me/244930695969" 
+            href="https://wa.me/244947935572" 
             className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105 shadow-lg shadow-green-900/20 w-full md:w-auto"
           >
             <MessageCircle size={20} />
@@ -40,10 +40,10 @@ const Hero: React.FC = () => {
           </a>
           
           <a 
-            href="#portfolio" 
+            href="#pacotes" 
             className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full font-bold text-lg transition-all w-full md:w-auto"
           >
-            Ver Portfólio
+            Ver Pacotes
             <ArrowRight size={20} />
           </a>
         </div>

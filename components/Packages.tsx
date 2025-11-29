@@ -80,7 +80,7 @@ const Packages: React.FC = () => {
               </ul>
 
               <a 
-                href={`https://wa.me/244947935572?text=Olá, tenho interesse no ${pkg.name}`}
+                href={`https://wa.me/244930695969?text=Olá, tenho interesse no ${pkg.name}`}
                 className={`w-full py-3 rounded-lg font-bold text-center transition-colors ${
                   pkg.highlight 
                     ? 'bg-brand-accent hover:bg-blue-600 text-white' 
