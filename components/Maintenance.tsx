@@ -39,7 +39,7 @@ const Maintenance: React.FC = () => {
         </div>
         
         <p className="text-center text-gray-500 text-sm mt-8 italic">
-          > Valores podem ser reajustados conforme a complexidade.
+          &gt; Valores podem ser reajustados conforme a complexidade.
         </p>
       </div>
     </section>
