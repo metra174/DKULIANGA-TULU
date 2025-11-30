@@ -1,7 +1,11 @@
 import React from 'react';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onOpenContact: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-transparent">
       
@@ -9,10 +13,6 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0">
          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-blue/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2"></div>
-         
-         {/* Grid Pattern */}
-         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10 text-center">
@@ -31,13 +31,13 @@ const Hero: React.FC = () => {
         </p>
         
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-          <a 
-            href="https://wa.me/244947355724" 
+          <button 
+            onClick={onOpenContact}
             className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105 shadow-lg shadow-green-900/20 w-full md:w-auto"
           >
             <MessageCircle size={20} />
             Falar no WhatsApp: 947 355 724
-          </a>
+          </button>
           
           <a 
             href="#pacotes" 

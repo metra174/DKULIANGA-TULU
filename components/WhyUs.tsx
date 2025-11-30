@@ -1,6 +1,10 @@
 import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
 
+interface WhyUsProps {
+  onOpenContact: () => void;
+}
+
 const advantages = [
   "Tecnologia moderna + criatividade profissional",
   "Entrega rápida",
@@ -11,7 +15,7 @@ const advantages = [
   "Ideal para qualquer tipo de negócio"
 ];
 
-const WhyUs: React.FC = () => {
+const WhyUs: React.FC<WhyUsProps> = ({ onOpenContact }) => {
   return (
     <section className="py-24 bg-brand-dark/90 backdrop-blur-sm">
       <div className="container mx-auto px-6">
@@ -31,19 +35,19 @@ const WhyUs: React.FC = () => {
                 ))}
               </div>
               <div className="mt-10">
-                <a 
-                   href="https://wa.me/244947355724" 
+                <button 
+                   onClick={onOpenContact}
                    className="inline-block bg-white text-brand-darker font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition-colors"
                 >
                   Começar Agora
-                </a>
+                </button>
               </div>
             </div>
 
             <div className="relative">
               <div className="absolute inset-0 bg-brand-accent blur-[100px] opacity-20"></div>
               <img 
-                src="https://picsum.photos/600/600?grayscale" 
+                src="https://i.imgur.com/NStHtjx.png" 
                 alt="Equipa trabalhando" 
                 className="relative z-10 rounded-2xl shadow-2xl border border-gray-700 w-full object-cover h-[400px] hover:scale-[1.02] transition-transform duration-500"
               />

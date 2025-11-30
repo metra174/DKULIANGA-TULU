@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onOpenContact: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -45,12 +49,12 @@ const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
-          <a 
-            href="https://wa.me/244947355724" 
+          <button 
+            onClick={onOpenContact}
             className="bg-brand-accent hover:bg-blue-600 text-white px-5 py-2 rounded-full font-medium transition-all transform hover:scale-105"
           >
             Falar Agora
-          </a>
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -76,12 +80,15 @@ const Navbar: React.FC = () => {
                 {link.name}
               </a>
             ))}
-             <a 
-            href="https://wa.me/244947355724" 
-            className="bg-brand-accent text-center text-white px-5 py-3 rounded-md font-bold mt-4"
-          >
-            Falar no WhatsApp
-          </a>
+             <button 
+              onClick={() => {
+                setIsMenuOpen(false);
+                onOpenContact();
+              }}
+              className="bg-brand-accent text-center text-white px-5 py-3 rounded-md font-bold mt-4 w-full"
+            >
+              Falar no WhatsApp
+            </button>
           </div>
         </div>
       )}
