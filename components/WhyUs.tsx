@@ -32,7 +32,7 @@ const WhyUs: React.FC = () => {
               </div>
               <div className="mt-10">
                 <a 
-                   href="https://wa.me/244947935572" 
+                   href="https://wa.me/244947355724" 
                    className="inline-block bg-white text-brand-darker font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition-colors"
                 >
                   Começar Agora

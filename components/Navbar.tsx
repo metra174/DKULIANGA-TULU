@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
             </a>
           ))}
           <a 
-            href="https://wa.me/244947935572" 
+            href="https://wa.me/244947355724" 
             className="bg-brand-accent hover:bg-blue-600 text-white px-5 py-2 rounded-full font-medium transition-all transform hover:scale-105"
           >
             Falar Agora
@@ -70,7 +70,7 @@ const Navbar: React.FC = () => {
               </a>
             ))}
              <a 
-            href="https://wa.me/244947935572" 
+            href="https://wa.me/244947355724" 
             className="bg-brand-accent text-center text-white px-5 py-3 rounded-md font-bold mt-4"
           >
             Falar no WhatsApp

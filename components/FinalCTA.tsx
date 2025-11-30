@@ -13,11 +13,11 @@ const FinalCTA: React.FC = () => {
         </p>
         
         <a 
-          href="https://wa.me/244947935572" 
+          href="https://wa.me/244947355724" 
           className="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-10 py-5 rounded-full font-bold text-xl transition-all hover:scale-105 shadow-xl shadow-green-900/30"
         >
           <MessageCircle className="w-6 h-6" />
-          Falar no WhatsApp — 947 935 572
+          Falar no WhatsApp — 947 355 724
         </a>
       </div>
     </section>
