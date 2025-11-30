@@ -13,7 +13,15 @@ import Navbar from './components/Navbar';
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-brand-darker text-white overflow-x-hidden selection:bg-brand-accent selection:text-white">
+    <div className="relative min-h-screen text-white overflow-x-hidden selection:bg-brand-accent selection:text-white">
+      {/* Global Background Image */}
+      <div 
+        className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat bg-fixed"
+        style={{ backgroundImage: "url('https://i.imgur.com/NStHtjx.png')" }}
+      >
+        <div className="absolute inset-0 bg-brand-darker/90"></div>
+      </div>
+
       <Navbar />
       <main>
         <Hero />

@@ -3,7 +3,7 @@ import { ArrowRight, MessageCircle } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-brand-darker">
+    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-transparent">
       
       {/* Background Elements */}
       <div className="absolute inset-0 z-0">

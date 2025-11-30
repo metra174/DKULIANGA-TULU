@@ -3,7 +3,7 @@ import { Code, Palette, Zap } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
-    <section id="sobre" className="py-24 bg-brand-dark">
+    <section id="sobre" className="py-24 bg-brand-dark/90 backdrop-blur-sm">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           

@@ -21,7 +21,7 @@ const testimonials = [
 
 const Testimonials: React.FC = () => {
   return (
-    <section className="py-24 bg-brand-darker">
+    <section className="py-24 bg-brand-darker/90 backdrop-blur-sm">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">O Que Dizem Nossos Clientes</h2>

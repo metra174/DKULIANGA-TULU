@@ -13,7 +13,7 @@ const advantages = [
 
 const WhyUs: React.FC = () => {
   return (
-    <section className="py-24 bg-brand-dark">
+    <section className="py-24 bg-brand-dark/90 backdrop-blur-sm">
       <div className="container mx-auto px-6">
         <div className="bg-gradient-to-br from-brand-blue/10 to-purple-900/10 rounded-3xl p-8 md:p-16 border border-brand-blue/20">
           <div className="grid md:grid-cols-2 gap-12 items-center">

@@ -23,8 +23,15 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-brand-darker/95 backdrop-blur-md shadow-lg py-4' : 'bg-transparent py-6'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="text-2xl font-bold tracking-tighter flex items-center gap-2">
-          <span className="text-brand-accent">DK</span>ulianga <span className="text-gray-500 text-sm">x</span> TULU
+        <a href="#" className="flex items-center gap-3">
+          <img 
+            src="https://i.imgur.com/PdPoq1H.png" 
+            alt="DKulianga + TULU" 
+            className="h-10 md:h-12 w-auto object-contain" 
+          />
+          <span className="text-white font-bold text-sm md:text-xl tracking-tight">
+            Tulu Studio + DKulianga
+          </span>
         </a>
 
         {/* Desktop Menu */}

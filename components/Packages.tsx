@@ -41,7 +41,7 @@ const packages = [
 
 const Packages: React.FC = () => {
   return (
-    <section id="pacotes" className="py-24 bg-brand-dark">
+    <section id="pacotes" className="py-24 bg-brand-dark/90 backdrop-blur-sm">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">Pacotes Especiais</h2>

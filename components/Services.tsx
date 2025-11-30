@@ -56,7 +56,7 @@ const services = [
 
 const Services: React.FC = () => {
   return (
-    <section id="servicos" className="py-24 bg-brand-darker relative">
+    <section id="servicos" className="py-24 bg-brand-darker/90 backdrop-blur-sm relative">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">Nossos Serviços</h2>
