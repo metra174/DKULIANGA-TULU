@@ -1,5 +1,5 @@
-import React from 'react';
-import { Check } from 'lucide-react';
+import React, { useState } from 'react';
+import { Check, X, Send } from 'lucide-react';
 
 const packages = [
   {
@@ -40,8 +40,56 @@ const packages = [
 ];
 
 const Packages: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPkg, setSelectedPkg] = useState<string | null>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    description: ''
+  });
+
+  const openModal = (pkgName: string) => {
+    setSelectedPkg(pkgName);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedPkg(null);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Construção da mensagem formatada
+    const message = `👋 Olá, tenho interesse no *${selectedPkg}*.\n\n` +
+      `📋 *MEUS DADOS:*\n` +
+      `👤 *Nome:* ${formData.name}\n` +
+      `📧 *Email:* ${formData.email}\n` +
+      `📱 *Telefone:* ${formData.phone}\n` +
+      `🏢 *Empresa:* ${formData.company || 'Não informada'}\n\n` +
+      `📝 *DESCRIÇÃO DO PROJETO:*\n${formData.description}\n\n` +
+      `❓ *Nota sobre Complexidade:* O cliente foi orientado a descrever se o projeto possui funcionalidades complexas acima.`;
+
+    // Link para o WhatsApp secundário (Pacotes)
+    const url = `https://wa.me/244930695969?text=${encodeURIComponent(message)}`;
+    
+    window.open(url, '_blank');
+    closeModal();
+  };
+
   return (
-    <section id="pacotes" className="py-24 bg-brand-dark/90 backdrop-blur-sm">
+    <section id="pacotes" className="py-24 bg-brand-dark/90 backdrop-blur-sm relative z-20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">Pacotes Especiais</h2>
@@ -79,8 +127,8 @@ const Packages: React.FC = () => {
                 ))}
               </ul>
 
-              <a 
-                href={`https://wa.me/244930695969?text=Olá, tenho interesse no ${pkg.name}`}
+              <button 
+                onClick={() => openModal(pkg.name)}
                 className={`w-full py-3 rounded-lg font-bold text-center transition-colors ${
                   pkg.highlight 
                     ? 'bg-brand-accent hover:bg-blue-600 text-white' 
@@ -88,11 +136,110 @@ const Packages: React.FC = () => {
                 }`}
               >
                 Escolher Pacote
-              </a>
+              </button>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Modal de Formulário */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            onClick={closeModal}
+          ></div>
+          
+          <div className="bg-brand-darker border border-gray-700 rounded-2xl w-full max-w-md relative z-10 p-6 md:p-8 animate-fade-in-up shadow-2xl">
+            <button 
+              onClick={closeModal}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+            >
+              <X size={24} />
+            </button>
+
+            <h3 className="text-2xl font-bold text-white mb-2">Solicitar Orçamento</h3>
+            <p className="text-brand-accent font-medium mb-6">Interesse em: {selectedPkg}</p>
+            
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm text-gray-400 mb-1">Nome Completo *</label>
+                <input 
+                  type="text" 
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full bg-brand-dark border border-gray-700 rounded-lg p-3 text-white focus:border-brand-accent focus:outline-none focus:ring-1 focus:ring-brand-accent transition-colors"
+                  placeholder="Seu nome"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm text-gray-400 mb-1">Telefone / WhatsApp *</label>
+                  <input 
+                    type="tel" 
+                    name="phone"
+                    required
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full bg-brand-dark border border-gray-700 rounded-lg p-3 text-white focus:border-brand-accent focus:outline-none transition-colors"
+                    placeholder="9xx xxx xxx"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-400 mb-1">Email</label>
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full bg-brand-dark border border-gray-700 rounded-lg p-3 text-white focus:border-brand-accent focus:outline-none transition-colors"
+                    placeholder="seu@email.com"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm text-gray-400 mb-1">Nome da Empresa (Opcional)</label>
+                <input 
+                  type="text" 
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  className="w-full bg-brand-dark border border-gray-700 rounded-lg p-3 text-white focus:border-brand-accent focus:outline-none transition-colors"
+                  placeholder="Nome do seu negócio"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm text-gray-400 mb-1">Descrição do Projeto *</label>
+                <textarea 
+                  name="description"
+                  required
+                  rows={4}
+                  value={formData.description}
+                  onChange={handleChange}
+                  className="w-full bg-brand-dark border border-gray-700 rounded-lg p-3 text-white focus:border-brand-accent focus:outline-none transition-colors resize-none"
+                  placeholder="Descreva o que precisa. IMPORTANTE: Mencione se o projeto terá funcionalidades complexas ou se será algo simples."
+                ></textarea>
+                <p className="text-xs text-gray-500 mt-1">
+                  Por favor, detalhe se o projeto é complexo ou simples na descrição acima.
+                </p>
+              </div>
+
+              <button 
+                type="submit"
+                className="w-full bg-brand-accent hover:bg-blue-600 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-transform active:scale-95"
+              >
+                <Send size={18} />
+                Enviar Solicitação
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
