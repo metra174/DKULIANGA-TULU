@@ -33,8 +33,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
       `📧 *Email:* ${formData.email || 'Não informado'}\n\n` +
       `📝 *Assunto/Projeto:* ${formData.description || 'Gostaria de saber mais sobre os serviços.'}`;
 
-    // Número principal para contratos/geral
-    const url = `https://wa.me/244947355724?text=${encodeURIComponent(message)}`;
+    // Número principal atualizado
+    const url = `https://wa.me/244930695969?text=${encodeURIComponent(message)}`;
     
     window.open(url, '_blank');
     onClose();
