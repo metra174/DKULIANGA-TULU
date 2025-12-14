@@ -29,7 +29,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
         </h1>
         
         <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          Comece 2024 com o pé direito. A TULU Digital cria páginas profissionais, lojas online e estratégias digitais para aproveitar as vendas de fim de ano.
+          Comece 2026 com o pé direito. A TULU Digital cria páginas profissionais, lojas online e estratégias digitais para aproveitar as vendas de fim de ano.
         </p>
         
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>

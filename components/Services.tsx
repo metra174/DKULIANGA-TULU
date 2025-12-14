@@ -42,7 +42,7 @@ const services = [
     icon: <Users className="w-8 h-8" />,
     title: "Consultoria Digital",
     price: "5.000 Kz – 15.000 Kz",
-    details: "Análise do seu negócio para começar 2024 a crescer.",
+    details: "Análise do seu negócio para começar 2026 a crescer.",
     color: "text-indigo-400"
   }
 ];
