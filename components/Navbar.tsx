@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Gift } from 'lucide-react';
+import { Menu, X, Rocket } from 'lucide-react';
 
 interface NavbarProps {
   onOpenContact: () => void;
@@ -18,9 +18,9 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   }, []);
 
   const navLinks = [
-    { name: 'A TULU', href: '#sobre' },
+    { name: 'Studio', href: '#sobre' },
     { name: 'Serviços', href: '#servicos' },
-    { name: 'Ofertas de Natal', href: '#pacotes' },
+    { name: 'Planos 2026', href: '#pacotes' },
     { name: 'Contactos', href: '#contactos' },
   ];
 
@@ -29,11 +29,8 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
       <div className="container mx-auto px-6 flex justify-between items-center">
         <a href="#" className="flex items-center gap-2 group">
           <div className="relative">
-             <div className="absolute -top-3 -right-2 transform rotate-12">
-               <Gift size={18} className="text-brand-red animate-bounce" />
-             </div>
              <span className="text-2xl font-black tracking-tighter text-white">
-              TULU <span className="text-brand-red">Digital</span>
+              TULU <span className="text-brand-primary">Studio</span>
              </span>
           </div>
         </a>
@@ -44,16 +41,16 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-gray-300 hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-wide"
+              className="text-gray-300 hover:text-brand-secondary transition-colors text-sm font-medium uppercase tracking-wide"
             >
               {link.name}
             </a>
           ))}
           <button 
             onClick={onOpenContact}
-            className="bg-brand-red hover:bg-red-700 text-white px-6 py-2 rounded-full font-medium transition-all transform hover:scale-105 shadow-lg shadow-red-900/30 border border-red-500/30"
+            className="bg-brand-primary hover:bg-brand-primary/80 text-white px-6 py-2 rounded-full font-medium transition-all transform hover:scale-105 shadow-lg shadow-brand-primary/30 border border-brand-primary/30"
           >
-            Falar Agora
+            Começar Projeto
           </button>
         </div>
 
@@ -75,7 +72,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 key={link.name} 
                 href={link.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="text-gray-300 hover:text-brand-gold text-lg font-medium"
+                className="text-gray-300 hover:text-brand-secondary text-lg font-medium"
               >
                 {link.name}
               </a>
@@ -85,7 +82,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 setIsMenuOpen(false);
                 onOpenContact();
               }}
-              className="bg-brand-red text-center text-white px-5 py-3 rounded-md font-bold mt-4 w-full"
+              className="bg-brand-primary text-center text-white px-5 py-3 rounded-md font-bold mt-4 w-full"
             >
               Pedir Orçamento
             </button>

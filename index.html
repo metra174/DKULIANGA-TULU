@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TULU Digital | Promoção de Natal</title>
+    <title>TULU Studio | Transformação Digital 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -14,26 +14,24 @@
               brand: {
                 dark: '#0f172a', // Slate 900
                 darker: '#020617', // Slate 950
-                red: '#dc2626', // Red 600 (Christmas Red)
-                green: '#15803d', // Green 700 (Pine Green)
-                gold: '#fbbf24', // Amber 400 (Gold)
-                accent: '#ef4444', // Red 500
+                primary: '#4f46e5', // Indigo 600
+                secondary: '#06b6d4', // Cyan 500
+                accent: '#8b5cf6', // Violet 500
               }
             },
             animation: {
               'fade-in-up': 'fadeInUp 0.8s ease-out',
-              'pulse-slow': 'pulse 3s infinite',
-              'snow': 'snowfall 10s linear infinite',
+              'pulse-slow': 'pulse 4s infinite',
+              'float': 'float 6s ease-in-out infinite',
             },
             keyframes: {
               fadeInUp: {
                 '0%': { opacity: '0', transform: 'translateY(20px)' },
                 '100%': { opacity: '1', transform: 'translateY(0)' },
               },
-              snowfall: {
-                '0%': { transform: 'translateY(-10px)', opacity: '0' },
-                '20%': { opacity: '1' },
-                '100%': { transform: 'translateY(100vh)', opacity: '0.3' },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
               }
             }
           }
@@ -45,6 +43,7 @@
         background-color: #020617;
         color: #f8fafc;
         font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
       }
       /* Custom Scrollbar */
       ::-webkit-scrollbar {
@@ -54,25 +53,11 @@
         background: #0f172a;
       }
       ::-webkit-scrollbar-thumb {
-        background: #dc2626; /* Red Scrollbar */
+        background: #4f46e5;
         border-radius: 5px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #b91c1c;
-      }
-      
-      /* Snow Effect Layer */
-      .snowflake {
-        position: fixed;
-        top: -10px;
-        z-index: 0;
-        color: #fff;
-        font-size: 1em;
-        opacity: 0.8;
-        pointer-events: none;
-        animation-name: snowfall;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
+        background: #4338ca;
       }
     </style>
   <script type="importmap">
