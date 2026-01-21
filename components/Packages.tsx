@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, X, Send, Zap, Rocket, ShieldCheck, Tag } from 'lucide-react';
+import { Check, X, Send, Zap, Rocket, ShieldCheck, Tag, PhoneCall, Star, ShoppingCart } from 'lucide-react';
 
 const packages = [
   {
@@ -15,7 +15,7 @@ const packages = [
     ],
     highlight: false,
     icon: <Zap className="w-6 h-6" />,
-    badge: "OFERTA DE JANEIRO"
+    badge: "OFERTA"
   },
   {
     name: "Profissional (Growth)",
@@ -24,30 +24,45 @@ const packages = [
     features: [
       "Landing Page Alta Conversão",
       "Seção de Portfólio/Produtos",
-      "Integração de Instagram Feed",
       "Configuração Pixel/Analytics",
       "Design Futurista 2026",
       "SEO Básico Incluso"
     ],
-    highlight: true,
+    highlight: false,
     icon: <Rocket className="w-6 h-6" />,
     badge: "MAIS VENDIDO"
   },
   {
-    name: "Enterprise (Scale)",
-    oldPrice: "456.000 Kz",
+    name: "Exclusive (Design)",
+    oldPrice: "210.000 Kz",
     price: "95.000 Kz",
     features: [
-      "E-commerce ou Site Corporativo",
-      "Consultoria de Tráfego Pago",
-      "Copywriting Avançado",
-      "Sistemas de Automação",
-      "Manutenção Pro (3 meses)",
-      "Prioridade Total no Studio"
+      "Landing Page Premium (Estética)",
+      "Animações High-End",
+      "Design de Marca Exclusivo",
+      "Otimização de Imagens 4K",
+      "Suporte VIP prioritário",
+      "Copywriting Nível A"
+    ],
+    highlight: true,
+    icon: <Star className="w-6 h-6" />,
+    badge: "DESIGN PRESTÍGIO"
+  },
+  {
+    name: "E-commerce (Scale)",
+    oldPrice: "950.000 Kz",
+    price: "700.000 Kz",
+    features: [
+      "Loja Online Completa",
+      "Controle/Manutenção (1 Mês)",
+      "Suporte Técnico (1 Mês)",
+      "Hospedagem (Conta Cliente)",
+      "Dashboard Administrativo",
+      "Integração de Pagamentos"
     ],
     highlight: false,
-    icon: <ShieldCheck className="w-6 h-6" />,
-    badge: "PROMO TULU STUDIO"
+    icon: <ShoppingCart className="w-6 h-6" />,
+    badge: "SOLUÇÃO COMPLETA"
   }
 ];
 
@@ -99,18 +114,20 @@ const Packages: React.FC = () => {
           <p className="text-gray-400">Gatilhos de desconto aplicados. Garanta sua vaga com preço de lançamento.</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {packages.map((pkg, index) => (
             <div 
               key={index} 
-              className={`rounded-2xl p-8 border transition-all duration-500 relative flex flex-col ${
+              className={`rounded-2xl p-6 border transition-all duration-500 relative flex flex-col ${
                 pkg.highlight 
-                  ? 'bg-gradient-to-b from-brand-darker to-indigo-950/40 border-brand-primary shadow-2xl shadow-brand-primary/20 transform md:-translate-y-4 z-10' 
+                  ? 'bg-gradient-to-b from-brand-darker to-indigo-950/40 border-brand-primary shadow-2xl shadow-brand-primary/20 transform md:-translate-y-2 z-10' 
                   : 'bg-brand-darker border-gray-800 hover:border-brand-primary/50'
               }`}
             >
               {pkg.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-accent text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter shadow-lg">
+                <div className={`absolute -top-3 left-1/2 -translate-x-1/2 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter shadow-lg ${
+                  pkg.highlight ? 'bg-brand-primary' : 'bg-gray-800'
+                }`}>
                   {pkg.badge}
                 </div>
               )}
@@ -119,36 +136,35 @@ const Packages: React.FC = () => {
                 {pkg.icon}
               </div>
               
-              <h3 className="text-xl font-bold mb-4 text-white uppercase tracking-tight">{pkg.name}</h3>
+              <h3 className="text-lg font-bold mb-4 text-white uppercase tracking-tight leading-tight">{pkg.name}</h3>
               
               <div className="mb-6">
-                <span className="text-gray-500 line-through text-lg block mb-1">
+                <span className="text-gray-500 line-through text-sm block mb-1">
                   {pkg.oldPrice}
                 </span>
-                <div className="text-4xl font-black text-white flex items-baseline">
+                <div className="text-3xl font-black text-white flex items-baseline flex-wrap">
                   {pkg.price}
-                  <span className="text-xs font-medium text-gray-500 ml-2 uppercase">Investimento</span>
                 </div>
               </div>
               
-              <ul className="space-y-4 mb-8 flex-grow">
+              <ul className="space-y-3 mb-8 flex-grow">
                 {pkg.features.map((feature, i) => (
                   <li key={i} className="flex items-start text-gray-300">
-                    <Check className="text-brand-secondary mr-3 flex-shrink-0" size={18} />
-                    <span className="text-sm font-medium">{feature}</span>
+                    <Check className="text-brand-secondary mr-2 flex-shrink-0" size={16} />
+                    <span className="text-xs font-medium">{feature}</span>
                   </li>
                 ))}
               </ul>
 
               <button 
                 onClick={() => openModal(pkg.name)}
-                className={`w-full py-4 rounded-xl font-black text-sm uppercase tracking-widest transition-all ${
+                className={`w-full py-3 rounded-xl font-black text-xs uppercase tracking-widest transition-all ${
                   pkg.highlight 
                     ? 'bg-brand-primary hover:bg-brand-primary/80 text-white shadow-xl shadow-brand-primary/30' 
                     : 'bg-gray-800 hover:bg-gray-700 text-white border border-white/5'
                 }`}
               >
-                Ativar Promoção
+                Ativar Plano
               </button>
             </div>
           ))}
@@ -169,6 +185,10 @@ const Packages: React.FC = () => {
               <button type="submit" className="w-full bg-brand-primary hover:bg-brand-primary/80 text-white font-black py-4 rounded-xl flex items-center justify-center gap-3 shadow-lg shadow-brand-primary/20">
                 <Send size={18} /> ENVIAR PEDIDO AGORA
               </button>
+              <div className="mt-6 pt-4 border-t border-gray-800 flex items-center gap-3 text-xs text-gray-400 italic">
+                <PhoneCall size={14} className="text-brand-secondary" />
+                <p>Se não respondermos em breve, ligue para o suporte (955 409 747) se o assunto for urgente.</p>
+              </div>
             </form>
           </div>
         </div>

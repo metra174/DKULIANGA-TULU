@@ -21,13 +21,18 @@ const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenContact }) => {
           O ano já começou. Não espere pela concorrência. Posicione o seu negócio no topo do mercado angolano com o TULU Studio.
         </p>
         
-        <button 
-          onClick={onOpenContact}
-          className="inline-flex items-center gap-3 bg-brand-primary hover:bg-indigo-700 text-white px-10 py-5 rounded-full font-bold text-xl transition-all hover:scale-105 shadow-xl shadow-indigo-900/40 border border-indigo-500/30"
-        >
-          <MessageCircle className="w-6 h-6" />
-          Falar no WhatsApp
-        </button>
+        <div className="flex flex-col items-center gap-4">
+          <button 
+            onClick={onOpenContact}
+            className="inline-flex items-center gap-3 bg-brand-primary hover:bg-indigo-700 text-white px-10 py-5 rounded-full font-bold text-xl transition-all hover:scale-105 shadow-xl shadow-indigo-900/40 border border-indigo-500/30"
+          >
+            <MessageCircle className="w-6 h-6" />
+            Falar no WhatsApp
+          </button>
+          <p className="text-gray-500 text-sm mt-2 italic">
+            Caso queira o produto com urgência, ligue para o RH: <a href="tel:930695969" className="text-white font-bold hover:underline">930 695 969</a>
+          </p>
+        </div>
       </div>
     </section>
   );
