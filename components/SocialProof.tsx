@@ -27,16 +27,17 @@ const namesFem = [
 ];
 
 const actions = [
-  "adquiriu o Pacote Start",
-  "adquiriu o Pacote Profissional",
-  "adquiriu o Pacote Premium",
+  "adquiriu o Plano Essencial (Start)",
+  "adquiriu o Plano Profissional (Growth)",
+  "adquiriu o Plano Exclusive Design",
+  "fechou contrato do Plano E-commerce Pro",
+  "solicitou abertura de conta VISA",
+  "iniciou consultoria para Cartão VISA",
   "contratou Gestão de Redes Sociais",
-  "solicitou Consultoria Digital",
-  "encomendou uma Landing Page",
-  "contratou Tráfego Pago",
-  "agendou uma sessão de fotos",
-  "comprou um Website / Loja Online",
-  "solicitou um orçamento"
+  "encomendou uma Landing Page de Alta Conversão",
+  "solicitou orçamento para Loja Online",
+  "solicitou manutenção mensal do site",
+  "acabou de ativar um novo projeto no Studio"
 ];
 
 const SocialProof: React.FC = () => {
@@ -47,9 +48,9 @@ const SocialProof: React.FC = () => {
     let timeoutId: ReturnType<typeof setTimeout>;
 
     const scheduleNext = () => {
-        // Tempo aleatório entre 4 e 20 segundos (min_time = 4, max_time = 20)
-        const minTime = 4000;
-        const maxTime = 20000;
+        // Tempo aleatório entre 6 e 25 segundos para parecer mais natural
+        const minTime = 6000;
+        const maxTime = 25000;
         const delay = Math.floor(Math.random() * (maxTime - minTime + 1) + minTime);
 
         timeoutId = setTimeout(() => {
@@ -58,7 +59,7 @@ const SocialProof: React.FC = () => {
     };
 
     const showNotification = () => {
-        // Sorteio: Masculino ou Feminino (aprox 50%)
+        // Sorteio: Masculino ou Feminino
         const isMasc = Math.random() > 0.5;
         const nameList = isMasc ? namesMasc : namesFem;
         
@@ -68,11 +69,11 @@ const SocialProof: React.FC = () => {
         setNotification({ name: randomName, action: randomAction });
         setIsVisible(true);
 
-        // Ocultar após 4 segundos (tempo timeout do script)
+        // Ocultar após 5 segundos
         setTimeout(() => {
             setIsVisible(false);
             scheduleNext();
-        }, 4000);
+        }, 5000);
     };
 
     // Iniciar o ciclo
@@ -89,15 +90,18 @@ const SocialProof: React.FC = () => {
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
       }`}
     >
-      <div className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-3 rounded-lg shadow-2xl flex items-center gap-3 max-w-sm">
-        <div className="bg-green-500 rounded-full p-1 text-white shrink-0">
-           <CheckCircle size={14} strokeWidth={3} />
+      <div className="bg-brand-darker/90 backdrop-blur-xl border border-white/10 text-white px-5 py-4 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center gap-4 max-w-sm">
+        <div className="bg-brand-primary rounded-full p-1.5 text-white shrink-0 shadow-lg shadow-brand-primary/20">
+           <CheckCircle size={16} strokeWidth={3} />
         </div>
         <div>
-           <p className="text-sm leading-tight">
-             <span className="font-bold">{notification.name}</span> {notification.action}.
+           <p className="text-sm leading-tight text-gray-100">
+             <span className="font-bold text-white">{notification.name}</span> {notification.action}.
            </p>
-           <p className="text-xs text-gray-400 mt-1">Agora mesmo</p>
+           <div className="flex items-center gap-2 mt-1.5">
+             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+             <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Agora mesmo</p>
+           </div>
         </div>
       </div>
     </div>

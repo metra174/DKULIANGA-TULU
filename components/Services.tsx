@@ -13,8 +13,8 @@ const services = [
   {
     icon: <ShoppingBag className="w-8 h-8" />,
     title: "Lojas Online (E-commerce)",
-    price: "700.000 Kz",
-    details: "Sua plataforma de vendas completa com gestão de manutenção e suporte.",
+    price: "2.500.000 Kz",
+    details: "Plataforma de vendas robusta e completa (Apenas criação).",
     color: "text-brand-secondary",
     status: "DISPONÍVEL"
   },
