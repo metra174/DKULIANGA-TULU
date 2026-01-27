@@ -28,6 +28,8 @@ const actions = [
   "adquiriu o Plano Exclusive Design",
   "fechou contrato do Plano E-commerce Pro",
   "abriu sua Conta Digital TULU por 5.000 Kz",
+  "colocou sua empresa no Google Maps com o TULU Studio",
+  "ativou a visibilidade local no Google Maps hoje",
   "solicitou abertura de conta digital este mês",
   "contratou Gestão de Redes Sociais",
   "encomendou uma Landing Page de Alta Conversão",

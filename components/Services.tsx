@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layout, ShoppingBag, TrendingUp, Share2, Video, Wallet, Sparkles, CreditCard, X, ChevronRight, MessageCircle } from 'lucide-react';
+import { Layout, ShoppingBag, TrendingUp, Share2, Video, Wallet, Sparkles, CreditCard, X, ChevronRight, MessageCircle, MapPin } from 'lucide-react';
 
 const services = [
   {
@@ -18,6 +18,15 @@ const services = [
     price: "2.500.000 Kz",
     details: "Plataforma de vendas robusta e completa (Apenas criação).",
     color: "text-brand-secondary",
+    status: "DISPONÍVEL"
+  },
+  {
+    id: 'maps',
+    icon: <MapPin className="w-8 h-8" />,
+    title: "Empresa no Google Maps",
+    price: "15.000 Kz",
+    details: "Colocamos seu negócio no topo das buscas locais. Seja encontrado por clientes próximos de você.",
+    color: "text-emerald-400",
     status: "DISPONÍVEL"
   },
   {
@@ -79,6 +88,15 @@ const Services: React.FC = () => {
     window.open(`https://wa.me/244930695969?text=${encodeURIComponent(message)}`, '_blank');
   };
 
+  const handleServiceClick = (id: string, title: string) => {
+    if (id === 'visa') {
+      handleVisaClick();
+    } else {
+      const message = `🚀 Olá TULU Studio! Tenho interesse no serviço: *${title}*.\n\nGostaria de saber mais detalhes.`;
+      window.open(`https://wa.me/244930695969?text=${encodeURIComponent(message)}`, '_blank');
+    }
+  };
+
   return (
     <section id="servicos" className="py-24 bg-brand-darker/90 backdrop-blur-sm relative border-t border-white/5">
       <div className="container mx-auto px-6">
@@ -98,19 +116,17 @@ const Services: React.FC = () => {
           {services.map((service, index) => {
             const isOut = service.status === "FORA DE SERVIÇO";
             const isVisa = service.id === 'visa';
-            const showBadge = service.status === "NOVO" || service.status === "BREVEMENTE" || (isVisa && service.status === "DISPONÍVEL");
+            const showBadge = service.status === "NOVO" || service.status === "BREVEMENTE" || (isVisa && service.status === "DISPONÍVEL") || (service.id === 'maps' && service.status === "DISPONÍVEL");
             
             return (
               <div 
                 key={index} 
-                onClick={isVisa ? handleVisaClick : undefined}
+                onClick={() => !isOut && handleServiceClick(service.id, service.title)}
                 className={`group bg-brand-dark p-10 rounded-[2.5rem] border transition-all duration-500 relative overflow-hidden flex flex-col h-full ${
                   isOut 
                   ? 'border-gray-800 grayscale opacity-40 cursor-not-allowed' 
-                  : isVisa 
-                    ? 'border-rose-500/30 hover:border-rose-500/60 cursor-pointer hover:-translate-y-3 bg-gradient-to-br from-rose-950/20 to-brand-dark shadow-[0_20px_60px_rgba(225,29,72,0.1)]'
-                    : 'border-white/5 hover:border-brand-primary/40 hover:-translate-y-3 hover:shadow-[0_20px_60px_rgba(225,29,72,0.15)]'
-                }`}
+                  : 'border-white/5 hover:border-brand-primary/40 cursor-pointer hover:-translate-y-3 hover:shadow-[0_20px_60px_rgba(225,29,72,0.15)]'
+                } ${isVisa ? 'border-rose-500/30 bg-gradient-to-br from-rose-950/20 to-brand-dark shadow-[0_20px_60px_rgba(225,29,72,0.1)]' : ''} ${service.id === 'maps' ? 'border-emerald-500/20 bg-gradient-to-br from-emerald-950/10 to-brand-dark' : ''}`}
               >
                 {isOut && (
                   <div className="absolute top-6 right-[-45px] rotate-45 bg-gray-600 text-white text-[9px] font-black py-1.5 px-12 shadow-lg z-20 flex flex-col items-center">
@@ -120,7 +136,7 @@ const Services: React.FC = () => {
                 )}
                 
                 {showBadge && (
-                  <div className={`absolute top-6 right-[-35px] rotate-45 text-brand-darker text-[9px] font-black py-1.5 px-12 shadow-lg z-20 animate-pulse ${isVisa ? 'bg-rose-500' : 'bg-yellow-500'}`}>
+                  <div className={`absolute top-6 right-[-35px] rotate-45 text-brand-darker text-[9px] font-black py-1.5 px-12 shadow-lg z-20 animate-pulse ${isVisa ? 'bg-rose-500' : service.id === 'maps' ? 'bg-emerald-500' : 'bg-yellow-500'}`}>
                     {service.status}
                   </div>
                 )}
@@ -135,7 +151,7 @@ const Services: React.FC = () => {
                 
                 <div className="flex items-baseline gap-2 mb-6">
                    <p className={`text-3xl font-black ${isOut ? 'text-gray-600' : 'text-white'}`}>{service.price}</p>
-                   {(isVisa || service.id === 'conta') && <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Taxa de Abertura</span>}
+                   {(isVisa || service.id === 'conta' || service.id === 'maps') && <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">{service.id === 'maps' ? 'Taxa Única' : 'Taxa de Abertura'}</span>}
                 </div>
 
                 <p className={`text-sm leading-relaxed border-t border-white/5 pt-6 font-medium italic mb-6 flex-grow ${isOut ? 'text-gray-600' : 'text-gray-400'}`}>
@@ -144,8 +160,8 @@ const Services: React.FC = () => {
 
                 {!isOut && (
                   <div className="mt-auto flex justify-end">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg transition-transform group-hover:scale-125 ${isVisa ? 'bg-rose-500 shadow-rose-500/30' : 'bg-brand-primary shadow-brand-primary/30'}`}>
-                       {isVisa ? <ChevronRight size={24} /> : <TrendingUp size={20} />}
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg transition-transform group-hover:scale-125 ${isVisa ? 'bg-rose-500 shadow-rose-500/30' : service.id === 'maps' ? 'bg-emerald-500 shadow-emerald-500/30' : 'bg-brand-primary shadow-brand-primary/30'}`}>
+                       {isVisa || service.id === 'maps' ? <ChevronRight size={24} /> : <TrendingUp size={20} />}
                     </div>
                   </div>
                 )}
