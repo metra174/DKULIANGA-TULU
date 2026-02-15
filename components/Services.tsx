@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
-import { Layout, ShoppingBag, TrendingUp, Share2, Video, Wallet, Sparkles, CreditCard, X, ChevronRight, MessageCircle, MapPin } from 'lucide-react';
+import { Layout, ShoppingBag, TrendingUp, Share2, Wallet, Sparkles, CreditCard, X, ChevronRight, MessageCircle, MapPin, Palette, BookOpen, Stethoscope } from 'lucide-react';
 
 const services = [
   {
     id: 'landing',
     icon: <Layout className="w-8 h-8" />,
     title: "Criação de Landing Pages",
-    price: "A partir de 25.000 Kz",
+    price: "A partir de 35.000 Kz",
     details: "Layouts de alta conversão otimizados para as vendas de 2026.",
     color: "text-brand-primary",
     status: "DISPONÍVEL"
+  },
+  {
+    id: 'clinicas',
+    icon: <Stethoscope className="w-8 h-8" />,
+    title: "Sites para Clínicas",
+    price: "60.000 Kz",
+    details: "Sistema especializado para saúde com foco em agendamentos e confiança.",
+    color: "text-sky-400",
+    status: "NOVO"
   },
   {
     id: 'ecommerce',
@@ -27,6 +36,24 @@ const services = [
     price: "15.000 Kz",
     details: "Colocamos seu negócio no topo das buscas locais. Seja encontrado por clientes próximos de você.",
     color: "text-emerald-400",
+    status: "DISPONÍVEL"
+  },
+  {
+    id: 'logo',
+    icon: <Palette className="w-8 h-8" />,
+    title: "Criação de Logotipos",
+    price: "10.000 Kz",
+    details: "Identidade visual única e memorável para destacar sua marca no mercado.",
+    color: "text-indigo-400",
+    status: "DISPONÍVEL"
+  },
+  {
+    id: 'portfolio',
+    icon: <BookOpen className="w-8 h-8" />,
+    title: "Portfólios & Panfletos",
+    price: "15.000 Kz",
+    details: "Design profissional para apresentações corporativas e materiais promocionais.",
+    color: "text-amber-400",
     status: "DISPONÍVEL"
   },
   {
@@ -64,7 +91,7 @@ const services = [
     title: "Gestão de Redes Sociais",
     price: "A partir de 45.000 Kz / mês",
     details: "Posicionamento estratégico e design premium para o seu perfil.",
-    color: "text-indigo-400",
+    color: "text-violet-400",
     status: "DISPONÍVEL"
   }
 ];
@@ -102,13 +129,13 @@ const Services: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-brand-primary/10 rounded-full text-brand-secondary text-[10px] font-black uppercase tracking-[0.2em]">
-            <Sparkles size={12} /> Ecossistema Financeiro & Digital 2026
+            <Sparkles size={12} /> Ecossistema Criativo & Digital 2026
           </div>
           <h2 className="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tighter italic text-white">
             NOSSOS <span className="text-gradient">SERVIÇOS</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto italic font-medium">
-            Tecnologia de ponta para quem não aceita resultados comuns este mês.
+            Engenharia visual e tecnológica para destacar sua marca este mês.
           </p>
         </div>
 
@@ -116,7 +143,7 @@ const Services: React.FC = () => {
           {services.map((service, index) => {
             const isOut = service.status === "FORA DE SERVIÇO";
             const isVisa = service.id === 'visa';
-            const showBadge = service.status === "NOVO" || service.status === "BREVEMENTE" || (isVisa && service.status === "DISPONÍVEL") || (service.id === 'maps' && service.status === "DISPONÍVEL");
+            const showBadge = service.status === "NOVO" || service.status === "BREVEMENTE" || (isVisa && service.status === "DISPONÍVEL") || (service.id === 'maps' && service.status === "DISPONÍVEL") || (service.id === 'clinicas' && service.status === "NOVO");
             
             return (
               <div 
@@ -126,7 +153,7 @@ const Services: React.FC = () => {
                   isOut 
                   ? 'border-gray-800 grayscale opacity-40 cursor-not-allowed' 
                   : 'border-white/5 hover:border-brand-primary/40 cursor-pointer hover:-translate-y-3 hover:shadow-[0_20px_60px_rgba(225,29,72,0.15)]'
-                } ${isVisa ? 'border-rose-500/30 bg-gradient-to-br from-rose-950/20 to-brand-dark shadow-[0_20px_60px_rgba(225,29,72,0.1)]' : ''} ${service.id === 'maps' ? 'border-emerald-500/20 bg-gradient-to-br from-emerald-950/10 to-brand-dark' : ''}`}
+                } ${isVisa ? 'border-rose-500/30 bg-gradient-to-br from-rose-950/20 to-brand-dark shadow-[0_20px_60px_rgba(225,29,72,0.1)]' : ''} ${service.id === 'clinicas' ? 'border-sky-500/30 shadow-[0_20px_60px_rgba(56,189,248,0.1)]' : ''}`}
               >
                 {isOut && (
                   <div className="absolute top-6 right-[-45px] rotate-45 bg-gray-600 text-white text-[9px] font-black py-1.5 px-12 shadow-lg z-20 flex flex-col items-center">
@@ -136,7 +163,7 @@ const Services: React.FC = () => {
                 )}
                 
                 {showBadge && (
-                  <div className={`absolute top-6 right-[-35px] rotate-45 text-brand-darker text-[9px] font-black py-1.5 px-12 shadow-lg z-20 animate-pulse ${isVisa ? 'bg-rose-500' : service.id === 'maps' ? 'bg-emerald-500' : 'bg-yellow-500'}`}>
+                  <div className={`absolute top-6 right-[-35px] rotate-45 text-brand-darker text-[9px] font-black py-1.5 px-12 shadow-lg z-20 animate-pulse ${isVisa ? 'bg-rose-500' : service.id === 'clinicas' ? 'bg-sky-500' : 'bg-yellow-500'}`}>
                     {service.status}
                   </div>
                 )}
@@ -151,7 +178,7 @@ const Services: React.FC = () => {
                 
                 <div className="flex items-baseline gap-2 mb-6">
                    <p className={`text-3xl font-black ${isOut ? 'text-gray-600' : 'text-white'}`}>{service.price}</p>
-                   {(isVisa || service.id === 'conta' || service.id === 'maps') && <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">{service.id === 'maps' ? 'Taxa Única' : 'Taxa de Abertura'}</span>}
+                   {(isVisa || service.id === 'conta' || service.id === 'maps' || service.id === 'clinicas') && <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">{service.id === 'maps' || service.id === 'clinicas' ? 'Taxa Única' : 'Taxa de Abertura'}</span>}
                 </div>
 
                 <p className={`text-sm leading-relaxed border-t border-white/5 pt-6 font-medium italic mb-6 flex-grow ${isOut ? 'text-gray-600' : 'text-gray-400'}`}>
@@ -160,8 +187,8 @@ const Services: React.FC = () => {
 
                 {!isOut && (
                   <div className="mt-auto flex justify-end">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg transition-transform group-hover:scale-125 ${isVisa ? 'bg-rose-500 shadow-rose-500/30' : service.id === 'maps' ? 'bg-emerald-500 shadow-emerald-500/30' : 'bg-brand-primary shadow-brand-primary/30'}`}>
-                       {isVisa || service.id === 'maps' ? <ChevronRight size={24} /> : <TrendingUp size={20} />}
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg transition-transform group-hover:scale-125 ${isVisa ? 'bg-rose-500 shadow-rose-500/30' : service.id === 'clinicas' ? 'bg-sky-500 shadow-sky-500/30' : 'bg-brand-primary shadow-brand-primary/30'}`}>
+                       {isVisa || service.id === 'maps' || service.id === 'clinicas' ? <ChevronRight size={24} /> : <TrendingUp size={20} />}
                     </div>
                   </div>
                 )}

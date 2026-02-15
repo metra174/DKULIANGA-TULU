@@ -24,6 +24,9 @@ const namesFem = [
 
 const actions = [
   "adquiriu o Plano Essencial (Start)",
+  "encomendou a criação de um Logotipo Premium",
+  "solicitou um Site para sua Clínica médica",
+  "contratou o design de Panfletos e Portfólio",
   "adquiriu o Plano Profissional (Growth)",
   "adquiriu o Plano Exclusive Design",
   "fechou contrato do Plano E-commerce Pro",

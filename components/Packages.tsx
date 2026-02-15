@@ -5,8 +5,8 @@ const packages = [
   {
     id: 'start',
     name: "Essencial (Start)",
-    oldPrice: "65.000 Kz",
-    price: "25.000 Kz",
+    oldPrice: "75.000 Kz",
+    price: "35.000 Kz",
     description: "Para quem precisa de presença digital rápida e profissional.",
     features: [
       "Landing Page Ultra-Veloz",
